@@ -1,0 +1,24 @@
+Partially Correct(TLE)
+
+int f(int x,int y,vector<int> A)
+{
+    int sum;
+    sum=abs(A[x]-A[y])+abs(x-y);
+    return sum;
+}
+
+int Solution::maxArr(vector<int> &A) {
+    int temp,i,j;
+    set<int,greater<int>>s1;
+    for(i=0;i<A.size();i++)
+    {
+        for(j=i+1;j<A.size();j++)
+        {
+           temp=f(i,j,A);
+           s1.insert(temp);
+        }
+    }
+    set<int, greater<int> >::iterator itr;
+    itr=s1.begin();
+    return *itr;
+}
